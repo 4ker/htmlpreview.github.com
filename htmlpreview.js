@@ -25,6 +25,8 @@
 				a[i].href = '//' + location.hostname + location.pathname + location.search + '#' + a[i].hash.substring(1); //Then rewrite URL with support for empty anchor
 			} else if ((href.indexOf('//raw.githubusercontent.com') > 0 || href.indexOf('//bitbucket.org') > 0) && (href.indexOf('.html') > 0 || href.indexOf('.htm') > 0)) { //Check if it's from raw.github.com or bitbucket.org and to HTML files
 				a[i].href = '//' + location.hostname + location.pathname + '?' + href; //Then rewrite URL so it can be loaded using CORS proxy
+			} else if (href.endsWith('.html')) {
+                a[i].href = window.location.protocol + "//" + window.location.host +  window.location.pathname + '?' + href;
 			}
 		}
 		//Stylesheets
